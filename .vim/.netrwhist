@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/ashish/projs/srijan/oncorps/sites/oncorps.og/docroot/sites/all/modules/oncorps_core/features/oc_views_org_reg_users'
+let g:netrw_dirhist_2='/Users/ashish/.vim'
