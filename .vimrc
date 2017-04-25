@@ -31,6 +31,18 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'joonty/vdebug'
+" Drupal Configuration
+Plugin 'git://drupalcode.org/project/vimrc.git', {'rtp': 'bundle/vim-plugin-for-drupal/'}
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'swekaj/php-foldexpr.vim'
+Plugin 'chase/vim-ansible-yaml'
+" http://fideloper.com/mac-vim-tmux
+Plugin 'altercation/vim-colors-solarized'
+" https://github.com/vim-airline/vim-airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'editorconfig/editorconfig-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,25 +59,13 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " https://github.com/joonty/vdebug
-Bundle "joonty/vdebug.git"
-" Drupal Configuration
-Bundle 'git://drupalcode.org/project/vimrc.git', {'rtp': 'bundle/vim-plugin-for-drupal/'}
 
-Bundle 'ntpeters/vim-better-whitespace'
-
-Bundle 'swekaj/php-foldexpr.vim'
-
-" http://fideloper.com/mac-vim-tmux
-Bundle 'altercation/vim-colors-solarized'
 " Some settings to enable the theme:
 set number
 syntax enable
 set background=dark
 let g:solarized_termcolors = 256
 colorscheme solarized
-
-" https://github.com/vim-airline/vim-airline
-Plugin 'vim-airline/vim-airline'
 
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -112,7 +112,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-n> :NERDTreeToggle<CR>
 
 " vebug
-let g:vdebug_options = {'break_on_open': 1, 'port' : 9000, 'server' : '', 'path_maps' : {'/var/www/oncorps/docroot' : '/Users/ashish/projs/srijan/oncorps/sites/oncorps/docroot', '/var/www/d8' : '/Users/ashish/projs/personal/drupal/sites/d8', '/var/www/oncorps.og/docroot' : '/Users/ashish/projs/srijan/oncorps/sites/oncorps.og/docroot'}}
+let g:vdebug_options = {'break_on_open': 1, 'port' : 9000, 'server' : '', 'path_maps' : {'/var/www/html/oncorps/docroot' : '/Users/ashish/Sites/oncorps.io/oncorps/docroot', '/var/www/d8' : '/Users/ashish/projs/personal/drupal/sites/d8'}}
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -143,3 +143,12 @@ command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 " neovim
 let g:neocomplete#enable_at_startup = 1
+nnoremap <Space> i_<Esc>r
+set pastetoggle=<F2>
+
+"Fugitive (Git) in status line
+set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
